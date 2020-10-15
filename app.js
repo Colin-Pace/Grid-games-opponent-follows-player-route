@@ -63,13 +63,14 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       // Erase previous iteration
-      if (!obstacle.coordinates.includes(player.previousIndex) && !opponent.route.path.includes(player.index)) {
+      if (!obstacle.coordinates.includes(player.index) && !opponent.route.path.includes(player.index)) {
         grid.elements[player.index].style.backgroundColor = grid.color;
       } else grid.elements[player.index].style.backgroundColor = obstacle.color;
 
       // Prevent player from crossing the obstacle
       if (obstacle.coordinates.includes(player.index)) {
         player.index = player.previousIndex;
+        return grid.elements[player.index].style.backgroundColor = player.color;
       }
 
       // Prevent player from moving through opponent
